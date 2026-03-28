@@ -1,0 +1,21 @@
+
+#canvas {
+    padding: 10% 20%; /* Classic book-page margins */
+    line-height: 1.6;
+    background-color: #f4f1ea; /* "Paris Review" paper stock color */
+    color: #1a1a1a;
+}
+
+.draggable-word {
+    font-family: "p22-mackinac-pro", serif; /* Or any high-end serif you have */
+    font-size: 1.2rem;
+    transition: color 0.2s ease;
+    cursor: grab;
+    display: inline-block; cursor: grab;
+}
+
+.draggable-word:active {
+    cursor: grabbing;
+    color: #0000ff; /* Subtle blue "ink" hint when moving */
+    z-index: 1000;
+}
