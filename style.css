@@ -1,21 +1,49 @@
+/* 1. Import the font at the very top of the file */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
 
-#canvas {
-    padding: 10% 20%; /* Classic book-page margins */
-    line-height: 1.6;
-    background-color: #f4f1ea; /* "Paris Review" paper stock color */
+/* Reset default browser margins and set global background */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f4f1ea;
+    min-height: 100vh;
+}
+
+#workspace {
+    padding: 10% 20%; 
+    line-height: 1.6; 
     color: #1a1a1a;
 }
 
 .draggable-word {
-    font-family: "p22-mackinac-pro", serif; /* Or any high-end serif you have */
-    font-size: 1.2rem;
-    transition: color 0.2s ease;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 400;
+    font-size: 1.4rem;
+    
+    display: inline-block;
+    vertical-align: baseline;
+    
+    /* Interaction & Selection */
+    user-select: none; 
+    -webkit-user-select: none;
+    touch-action: none; 
     cursor: grab;
-    display: inline-block; cursor: grab;
+    
+    transition: color 0.2s ease;
 }
 
 .draggable-word:active {
     cursor: grabbing;
-    color: #0000ff; /* Subtle blue "ink" hint when moving */
+    color: #4d4037;
     z-index: 1000;
+}
+
+/* Status Classes */
+body.alt-held .draggable-word {
+    cursor: no-drop;
+}
+
+.draggable-word.erased {
+    opacity: 0;
+    pointer-events: none; /* Stops you from accidentally dragging an invisible word */
 }
