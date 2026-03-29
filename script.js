@@ -27,7 +27,7 @@ wordsArray.forEach((word) => {
         span.innerText = word + '\u00A0';
     }
 
-    // --- ADDED THIS BACK INSIDE THE LOOP ---
+
     span.addEventListener('click', (e) => {
         // e.altKey is Option, e.metaKey is Command (Mac)
         if (e.altKey || e.metaKey) {
@@ -38,7 +38,7 @@ wordsArray.forEach((word) => {
     workspace.appendChild(span);
 });
 
-// THE INTERACT LOGIC (Stays at the bottom)
+// Stays at the bottom
 interact('.draggable-word').draggable({
   listeners: {
     move (event) {

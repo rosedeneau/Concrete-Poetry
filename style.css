@@ -5,7 +5,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #f4f1ea;
+    background-color: #fffff2;
     min-height: 100vh;
 }
 
@@ -30,7 +30,14 @@ body {
     cursor: grab;
     
     transition: color 0.2s ease;
+
+    display: inline-block;
+     margin: 5px;
+     padding: 5px;
+     border: 1px solid #888888;
+     border-radius: 4px;
 }
+
 
 .draggable-word:active {
     cursor: grabbing;
@@ -47,3 +54,14 @@ body.alt-held .draggable-word {
     opacity: 0;
     pointer-events: none; /* Stops you from accidentally dragging an invisible word */
 }
+
+.parent {
+display: grid;
+grid-template-columns: repeat(5, 1fr);
+grid-template-rows: repeat(5, 1fr);
+grid-column-gap: 20px;
+grid-row-gap: 10px;
+}
+
+.div1 { grid-area: 1 / 1 / 6 / 2; }
+.div2 { grid-area: 1 / 2 / 6 / 6; }
