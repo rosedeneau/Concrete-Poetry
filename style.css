@@ -75,6 +75,12 @@ body {
     border-radius: 4px;
 }
 
+.instructions {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 400;
+    font-size: 1.4rem;
+}
+
 /* Added specific class for when words are being moved in the workspace */
 .draggable-word.in-canvas {
     position: absolute;
