@@ -1,19 +1,58 @@
-/* 1. Import the font at the very top of the file */
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
 
-/* Reset default browser margins and set global background */
-body {
-    margin: 0;
-    padding: 0;
-    background-color: #fffff2;
-    min-height: 100vh;
+
+:root {
+    --sidebar-width: 350px;
+    --border-color: #888888;
+    --container-radius: 12px;
 }
 
+
+body {
+    margin: 0;
+    padding: 20px;
+    background-color: #fffff2;
+    height: 100vh;
+    display: flex; /* This ensures side-by-side layout */
+    gap: 20px;
+    box-sizing: border-box;
+    overflow: hidden
+
+}
+
+#word-bank {
+    width: var(--sidebar-width);
+    height: 100%;
+    border: 1px solid var(--border-color);
+    border-radius: var(--container-radius);
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-content: flex-start;
+    overflow-y: auto;
+    flex-shrink: 0;
+    background: rgba(0, 0, 0, 0.02);
+     box-sizing: border-box;
+    overflow-y: scroll;
+}
+
+
 #workspace {
+    flex-grow: 1;
+    height: 100%;
+    border: 1px solid var(--border-color);
+    border-radius: var(--container-radius);
+    position: relative;
+    overflow: hidden;
+    background-color: transparent;
     padding: 10% 20%; 
     line-height: 1.6; 
     color: #1a1a1a;
+     box-sizing: border-box;
+    overflow: hidden
 }
+
 
 .draggable-word {
     font-family: "Cormorant Garamond", serif;
@@ -30,12 +69,16 @@ body {
     cursor: grab;
     
     transition: color 0.2s ease;
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
 
-    display: inline-block;
-     margin: 5px;
-     padding: 5px;
-     border: 1px solid #888888;
-     border-radius: 4px;
+/* Added specific class for when words are being moved in the workspace */
+.draggable-word.in-canvas {
+    position: absolute;
+    margin: 0;
 }
 
 
@@ -45,23 +88,14 @@ body {
     z-index: 1000;
 }
 
+
 /* Status Classes */
 body.alt-held .draggable-word {
     cursor: no-drop;
 }
 
+
 .draggable-word.erased {
     opacity: 0;
-    pointer-events: none; /* Stops you from accidentally dragging an invisible word */
+    pointer-events: none; 
 }
-
-.parent {
-display: grid;
-grid-template-columns: repeat(5, 1fr);
-grid-template-rows: repeat(5, 1fr);
-grid-column-gap: 20px;
-grid-row-gap: 10px;
-}
-
-.div1 { grid-area: 1 / 1 / 6 / 2; }
-.div2 { grid-area: 1 / 2 / 6 / 6; }
