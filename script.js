@@ -104,3 +104,30 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+let lastX = 0;
+let lastY = 0;
+const threshold = 20; // Increase this number to make fewer stars (Density)
+
+window.addEventListener('mousemove', function(e) {
+    // Calculate distance from the last star created
+    const distance = Math.hypot(e.pageX - lastX, e.pageY - lastY);
+
+    if (distance > threshold) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        
+        star.style.left = (e.pageX - 10) + 'px';
+        star.style.top = (e.pageY - 10) + 'px';
+        
+        document.body.appendChild(star);
+
+        // Update the "last" position to the current position
+        lastX = e.pageX;
+        lastY = e.pageY;
+
+        setTimeout(() => {
+            star.remove();
+        }, 1500); // Increased to match slower animation
+    }
+});

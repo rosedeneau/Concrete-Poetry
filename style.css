@@ -11,13 +11,12 @@
 body {
     margin: 0;
     padding: 20px;
-    background-color: #fffff2;
+    background-color: #f7e3e0;
     height: 100vh;
     display: flex; /* This ensures side-by-side layout */
     gap: 20px;
     box-sizing: border-box;
     overflow: hidden
-
 }
 
 #word-bank {
@@ -104,4 +103,34 @@ body.alt-held .draggable-word {
 .draggable-word.erased {
     opacity: 0;
     pointer-events: none; 
+}
+
+.star {
+    position: absolute;
+    pointer-events: none; /* Crucial: so the stars don't block your clicking/dragging */
+    width: 10px; 
+    height: 10px;
+    
+    /* 1. Add the Image */
+    background-image: url("https://64.media.tumblr.com/f09cbe0523d1921a134c139e5acbfc3c/03b330998bd7871a-c2/s75x75_c1/f163b7d6ee35024a8a50cee365e4ff85da45f8bb.pnj");
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+    /* 2. Layering */
+    z-index: 9999; 
+    
+    /* 3. The Motion Physics */
+    animation: slowDrift 1.5s ease-out forwards;
+}
+
+@keyframes slowDrift {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotate(0deg);
+    }
+    100% {
+        opacity: 0;
+        /* Drift down slightly and shrink away */
+        transform: translateY(30px) scale(0.2) rotate(90deg);
+    }
 }
